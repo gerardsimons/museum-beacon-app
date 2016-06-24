@@ -34,7 +34,8 @@ captures/
 
 # Intellij
 *.iml
-.idea
+MuseumBeaconApp/.idea/
+.idea/
 .idea/workspace.xml
 
 # Keystore files
