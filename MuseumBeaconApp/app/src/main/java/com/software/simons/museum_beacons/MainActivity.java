@@ -1,31 +1,26 @@
 package com.software.simons.museum_beacons;
 
-import android.net.Uri;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.widget.VideoView;
+import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
-    private VideoView beaconVideoView;
-
-    private void playVideo(int resourceId) {
-
-        String videoURIPath = "android.resource://com.software.simons.museum_beacons/" + resourceId;
-        Uri videoURI = Uri.parse(videoURIPath);
-        beaconVideoView.setVideoURI(videoURI);
-        beaconVideoView.requestFocus();
-        beaconVideoView.start();
-    }
+    public static final String VIDEO_URL = "video_url";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
 
-        beaconVideoView = (VideoView)findViewById(R.id.beaconVideoView);
+    public void videoTestMethod(View v) {
+//        String testVideoURL = "http://player.vimeo.com/video/24577973?player_id=player&autoplay=1&title=0&byline=0&portrait=0&api=1&maxheight=480&maxwidth=800";
+        String testVideoURL = "https://player.vimeo.com/video/173035125?player_id=player&autoplay=1&title=0&byline=0&portrait=0&api=1&maxheight=480&maxwidth=800";
 
-        //Play video
-        playVideo(R.raw.selectie_storm_org);
+        Intent intent = new Intent(this, VideoActivity.class);
+        intent.putExtra(VIDEO_URL,testVideoURL);
+        startActivity(intent);
     }
 }
