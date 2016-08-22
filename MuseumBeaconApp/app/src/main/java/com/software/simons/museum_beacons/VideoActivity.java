@@ -1,11 +1,12 @@
 package com.software.simons.museum_beacons;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
+import android.widget.VideoView;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -13,34 +14,32 @@ import android.webkit.WebViewClient;
  */
 public class VideoActivity extends Activity {
 
-
-    private static final String TAG = "VideoActivity";
+    private static final String TAG = VideoActivity.class.getSimpleName();
+    public final static String VIDEO_ID_KEY = "videoKey";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_video);
 
-        WebView videoWebView = (WebView) findViewById(R.id.videoWebView);
-        videoWebView.getSettings().setJavaScriptEnabled(true);
-        videoWebView.getSettings().setAppCacheEnabled(true);
-        videoWebView.getSettings().setDomStorageEnabled(true);
-        videoWebView.getSettings().setPluginState(WebSettings.PluginState.ON);
-
-        videoWebView.setWebViewClient(new WebViewClient() {
-            public boolean shouldOverrideUrlLoading(WebView view, String url){
-                // do your handling codes here, which url is the requested url
-                // probably you need to open that url rather than redirect:
-                view.loadUrl(url);
-                return false; // then it is not handled by default action
+        int videoId = getIntent().getExtras().getInt(VIDEO_ID_KEY, -1);
+        Log.d(TAG, "Video ID received = " + videoId);
+        VideoView videoPlayerView = (VideoView)findViewById(R.id.videoPlayerView);
+        String path = "android.resource://" + getPackageName() + "/" + videoId;
+        videoPlayerView.setVideoURI(Uri.parse(path));
+        videoPlayerView.start();
+        videoPlayerView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                Log.d(TAG,"Video finished playing....");
+                Intent returnIntent = new Intent();
+                setResult(Activity.RESULT_OK,returnIntent);
+                VideoActivity.this.finish();
             }
         });
-        String videoURL = getIntent().getExtras().getString(MainActivity.VIDEO_URL);
 
-        // Additional GET parameters to affect control
-//        videoURL += "?autoplay=true";
-
-        Log.d(TAG, "Video URL received = " + videoURL);
-        videoWebView.loadUrl(videoURL);
     }
+
+
 }

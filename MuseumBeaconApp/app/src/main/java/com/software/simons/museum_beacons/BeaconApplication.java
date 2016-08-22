@@ -8,12 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import com.estimote.sdk.Beacon;
 import com.estimote.sdk.BeaconManager;
-import com.estimote.sdk.Region;
-
-import java.util.List;
-import java.util.UUID;
 
 /**
  * Created by gerard on 21/06/16.
@@ -49,34 +44,7 @@ public class BeaconApplication extends Application {
 
     public void onCreate() {
         super.onCreate();
-        beaconManager = new BeaconManager(getApplicationContext());
-        beaconManager.connect(new BeaconManager.ServiceReadyCallback() {
-            @Override
-            public void onServiceReady() {
-                Log.d(TAG, "Beacon Monitoring Service Ready!");
-                beaconManager.startMonitoring(new Region("monitored region",
-                        UUID.fromString(BASIC_UUID), 60128, 45892)); // The icy one
-            }
-        });
 
-        beaconManager.setMonitoringListener(new BeaconManager.MonitoringListener() {
-            @Override
-            public void onEnteredRegion(Region region, List<Beacon> list) {
-                String title = "Entered the field of " + list.size() + " trackers";
-                String content = "";
-                for(Beacon b : list) {
-                    content += b.getMajor() + ":" + b.getMinor() + "\n";
-                }
-                Log.d(TAG, "Some region was entered");
-//                showNotification(title, content);
-            }
-            @Override
-            public void onExitedRegion(Region region) {
-                // could add an "exit" notification too if you want (-:
-                Log.d(TAG, "Some region was entered");
-//                showNotification("Region exited","Yep.");
-            }
-        });
 
         Log.d(TAG, "BeaconApplication created succesfully");
     }
