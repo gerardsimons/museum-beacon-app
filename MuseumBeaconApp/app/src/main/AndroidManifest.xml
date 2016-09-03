@@ -38,9 +38,9 @@
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
         <activity
             android:name=".VideoActivity"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-            android:label="@string/title_activity_video">
-        </activity>
+            android:label="@string/title_activity_video"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
+        <activity android:name=".BeaconConfigActivity"></activity>
     </application>
 
 </manifest>

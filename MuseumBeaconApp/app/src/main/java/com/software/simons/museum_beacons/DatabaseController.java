@@ -1,5 +1,7 @@
 package com.software.simons.museum_beacons;
 
+import android.util.Log;
+
 import com.estimote.sdk.Utils;
 
 import java.util.Collection;
@@ -12,7 +14,8 @@ import java.util.UUID;
  */
 public class DatabaseController {
 
-//    private List<BeaconConfig> registeredBeacons;
+    private static final String TAG = "DatabaseController";
+    //    private List<BeaconConfig> registeredBeacons;
     private Map<String, BeaconConfig> registeredBeacons;
 
     private static DatabaseController Instance;
@@ -47,10 +50,18 @@ public class DatabaseController {
 
     public void mockNativeVideoData() {
         UUID uuid = UUID.fromString("B9407F30-F5F8-466E-AFF9-25556B57FE6D"); //They all share the same UUID
+        Log.d(TAG, "Mocking native video data");
+//        registeredBeacons.put("60128:45892", new BeaconConfig("ice", uuid, 60128, 45892, Utils.Proximity.IMMEDIATE, R.raw.selectie_storm + ""));
+//        registeredBeacons.put("33777:44688", new BeaconConfig("blueberry", uuid, 33777, 44688, Utils.Proximity.NEAR, R.raw.selectie_juliana + ""));
+//        registeredBeacons.put("42465:50049", new BeaconConfig("mint", uuid, 42465, 50049, Utils.Proximity.FAR, R.raw.selectie_achterdek + ""));
+//        registeredBeacons.put("42465:50049", new BeaconConfig("mint", uuid, 42465, 50049, Utils.Proximity.NEAR, R.raw.selectie_achterdek + ""));
+
+//        registeredBeacons.put("60128:45892", new BeaconConfig("ice", uuid, 60128, 45892, Utils.Proximity.IMMEDIATE, R.raw.selectie_storm + ""));
+//        registeredBeacons.put("33777:44688", new BeaconConfig("blueberry", uuid, 33777, 44688, Utils.Proximity.IMMEDIATE, R.raw.selectie_juliana + ""));
+//        registeredBeacons.put("42465:50049", new BeaconConfig("mint", uuid, 42465, 50049, Utils.Proximity.IMMEDIATE, R.raw.selectie_achterdek + ""));
 
         registeredBeacons.put("60128:45892", new BeaconConfig("ice", uuid, 60128, 45892, Utils.Proximity.IMMEDIATE, R.raw.selectie_storm + ""));
         registeredBeacons.put("33777:44688", new BeaconConfig("blueberry", uuid, 33777, 44688, Utils.Proximity.NEAR, R.raw.selectie_juliana + ""));
-//        registeredBeacons.put("42465:50049", new BeaconConfig("mint", uuid, 42465, 50049, Utils.Proximity.FAR, R.raw.selectie_achterdek + ""));
         registeredBeacons.put("42465:50049", new BeaconConfig("mint", uuid, 42465, 50049, Utils.Proximity.NEAR, R.raw.selectie_achterdek + ""));
     }
 

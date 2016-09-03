@@ -6,4 +6,10 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
 
     <string name="title_activity_fullscreen">VideoActivity</string>
+
+    <string-array name="beacon_distances">
+        <item>Immediate</item>
+        <item>Near</item>
+        <item>Far</item>
+    </string-array>
 </resources>

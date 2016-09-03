@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.software.simons.museum_beacons.BeaconConfigActivity">
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TableRow>
+            <TextView android:text="Ice:"></TextView>
+            <Spinner android:id="@+id/ice_proximity_spinner"></Spinner>
+        </TableRow>
+        <TableRow>
+            <TextView android:text="Blueberry:"></TextView>
+            <Spinner android:id="@+id/blueberry_proximity_spinner"></Spinner>
+        </TableRow>
+        <TableRow>
+            <TextView android:text="Mint:"></TextView>
+            <Spinner android:id="@+id/mint_proximity_spinner"></Spinner>
+        </TableRow>
+    </TableLayout>
+</RelativeLayout>
