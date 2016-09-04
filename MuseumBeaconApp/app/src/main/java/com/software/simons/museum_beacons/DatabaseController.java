@@ -15,7 +15,6 @@ import java.util.UUID;
 public class DatabaseController {
 
     private static final String TAG = "DatabaseController";
-    //    private List<BeaconConfig> registeredBeacons;
     private Map<String, BeaconConfig> registeredBeacons;
 
     private static DatabaseController Instance;
@@ -41,11 +40,6 @@ public class DatabaseController {
         registeredBeacons.put("60128:45892", new BeaconConfig("ice", uuid, 60128, 45892, Utils.Proximity.IMMEDIATE, "7-qGKqveZaM")); // Hi Bye
         registeredBeacons.put("33777:44688", new BeaconConfig("blueberry", uuid, 33777, 44688, Utils.Proximity.NEAR, "9uDgJ9_H0gg")); // SDude
         registeredBeacons.put("42465:50049", new BeaconConfig("mint", uuid, 42465, 50049, Utils.Proximity.FAR, "tPEE9ZwTmy0")); // Cat?
-
-        // 3 Videos per one label, one for each proximity zone
-//        registeredBeacons.put("60128:45892:" + Utils.Proximity.IMMEDIATE, new BeaconConfig("ice", uuid, 60128, 45892, Utils.Proximity.IMMEDIATE, "7-qGKqveZaM")); // Hi Bye
-//        registeredBeacons.put("60128:45892:" + Utils.Proximity.NEAR, new BeaconConfig("blueberry", uuid, 60128, 45892, Utils.Proximity.NEAR, "9uDgJ9_H0gg")); // Hi Bye
-//        registeredBeacons.put("60128:45892:" + Utils.Proximity.FAR, new BeaconConfig("ice", uuid, 60128, 45892, Utils.Proximity.FAR, "tPEE9ZwTmy0")); // Hi Bye
     }
 
     public void mockNativeVideoData() {

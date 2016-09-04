@@ -26,10 +26,11 @@
         android:id="@+id/debugText"
         />
     <Button
-        android:text="Test"
+        android:background="@android:color/transparent"
+        android:text="Beacon Config"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="videoTestMethod"
+        android:onClick="gotoBeaconConfigActivity"
         android:layout_alignParentBottom="true"
         />
 </RelativeLayout>

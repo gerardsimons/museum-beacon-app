@@ -70,4 +70,8 @@ public class BeaconConfig {
     public Utils.Proximity getProximityTrigger() {
         return proximityTrigger;
     }
+
+    public void setProximityTrigger(Utils.Proximity proximityTrigger) {
+        this.proximityTrigger = proximityTrigger;
+    }
 }

@@ -26,6 +26,7 @@ public class MainActivity extends Activity {
 
     public static final String VIDEO_URL = "video_url";
     public static final String YT_VIDEO_ID = "yt_video_id";
+    public static final String PREFEFRENCES_NAME = "prefs";
     private static final String TAG = "MainActivity";
 
     private static final int PLAY_VIDEO_REQUEST = 1234;
@@ -74,24 +75,43 @@ public class MainActivity extends Activity {
         visitedBeacons = new HashMap<>();
         playQueue = new LinkedList<>();
 
+
+
 //        enableRegionMonitoring();
         enableRanging();
+    }
+
+    private void checkBeaconConfigSettings() {
+        //Update distances according to sharedpreferences
+
+        SharedPreferences sp = getSharedPreferences(PREFEFRENCES_NAME, MODE_PRIVATE)
+        List<BeaconConfig> beacons = databaseController.getRegisteredBeacons();
+        for(BeaconConfig bc : beacons) {
+            //TODO: Get preferences acoording to settings
+        }
+    }
+
+    public void gotoBeaconConfigActivity() {
+        Intent intent = new Intent(this, BeaconConfigActivity.class);
+        startActivity(intent);
     }
 
     @Override
     public void onResume() {
         super.onResume();
         SystemRequirementsChecker.checkWithDefaultDialogs(this);
+
+        checkBeaconConfigSettings();
     }
 
     private Toast toast;
-    public void showAToast (String st){ //"Toast toast" is declared in the class
-        try{ toast.getView().isShown();     // true if visible
+    public void showAToast (String st){
+        try{ toast.getView().isShown();
             toast.setText(st);
-        } catch (Exception e) {         // invisible if exception
+        } catch (Exception e) {
             toast = Toast.makeText(this, st, Toast.LENGTH_SHORT);
         }
-        toast.show();  //finally display it
+        toast.show();
     }
 
     private void checkBeaconTrigger(List<Beacon> beaconList) {

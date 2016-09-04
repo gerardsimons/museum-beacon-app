@@ -13,15 +13,24 @@
         android:layout_height="wrap_content">
         <TableRow>
             <TextView android:text="Ice:"></TextView>
-            <Spinner android:id="@+id/ice_proximity_spinner"></Spinner>
+            <Spinner
+                android:id="@+id/ice_proximity_spinner"
+                android:entries="@array/beacon_distances">
+            </Spinner>
         </TableRow>
         <TableRow>
             <TextView android:text="Blueberry:"></TextView>
-            <Spinner android:id="@+id/blueberry_proximity_spinner"></Spinner>
+            <Spinner
+                android:id="@+id/blueberry_proximity_spinner"
+                android:entries="@array/beacon_distances">
+            </Spinner>
         </TableRow>
         <TableRow>
             <TextView android:text="Mint:"></TextView>
-            <Spinner android:id="@+id/mint_proximity_spinner"></Spinner>
+            <Spinner
+                android:id="@+id/mint_proximity_spinner"
+                android:entries="@array/beacon_distances"
+                ></Spinner>
         </TableRow>
     </TableLayout>
 </RelativeLayout>
