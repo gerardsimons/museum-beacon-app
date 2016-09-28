@@ -1,8 +1,9 @@
-package com.software.simons.museum_beacons;
+package com.software.simons.museum_beacon;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -26,7 +27,7 @@ public class MainActivity extends Activity {
 
     public static final String VIDEO_URL = "video_url";
     public static final String YT_VIDEO_ID = "yt_video_id";
-    public static final String PREFEFRENCES_NAME = "prefs";
+    public static final String PREFERENCES_NAME = "prefs";
     private static final String TAG = "MainActivity";
 
     private static final int PLAY_VIDEO_REQUEST = 1234;
@@ -75,8 +76,6 @@ public class MainActivity extends Activity {
         visitedBeacons = new HashMap<>();
         playQueue = new LinkedList<>();
 
-
-
 //        enableRegionMonitoring();
         enableRanging();
     }
@@ -84,14 +83,28 @@ public class MainActivity extends Activity {
     private void checkBeaconConfigSettings() {
         //Update distances according to sharedpreferences
 
-        SharedPreferences sp = getSharedPreferences(PREFEFRENCES_NAME, MODE_PRIVATE)
-        List<BeaconConfig> beacons = databaseController.getRegisteredBeacons();
+        SharedPreferences sp = getSharedPreferences(PREFERENCES_NAME, MODE_PRIVATE);
+        Collection<BeaconConfig> beacons = databaseController.getRegisteredBeacons();
         for(BeaconConfig bc : beacons) {
             //TODO: Get preferences acoording to settings
+            String beaconPrefKey = bc.getName() + "_" + BeaconConfigActivity.PROXIMITY_SUFFIX;
+            int proximityInt = sp.getInt(beaconPrefKey, -1);
+            Utils.Proximity proximity = Util.ProximityForInt(proximityInt);
+            if(proximity != null) {
+                Utils.Proximity oldProximityTrigger = bc.getProximityTrigger();
+                if (oldProximityTrigger != proximity) {
+                    bc.setProximityTrigger(proximity);
+                    Log.d(TAG, "Setting proximity trigger to " + proximity.toString());
+                }
+                else {
+                    Log.d(TAG, "Proximity trigger already set to " + proximity.toString());
+                }
+            }
+            Log.d(TAG, "No proximity preference set for " + bc.getName() + " proximity stays at " + bc.getProximityTrigger());
         }
     }
 
-    public void gotoBeaconConfigActivity() {
+    public void gotoBeaconConfigActivity(View v) {
         Intent intent = new Intent(this, BeaconConfigActivity.class);
         startActivity(intent);
     }

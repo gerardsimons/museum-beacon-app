@@ -1,12 +1,6 @@
 <resources>
-    <string name="app_name">EstimoteTest</string>
-
+    <string name="app_name">SS Rotterdam</string>
     <string name="title_activity_video">VideoActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
-
-    <string name="title_activity_fullscreen">VideoActivity</string>
-
     <string-array name="beacon_distances">
         <item>Immediate</item>
         <item>Near</item>

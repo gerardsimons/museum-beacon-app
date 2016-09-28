@@ -3,7 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="#000"
-    tools:context="com.software.simons.museum_beacons.VideoActivity">
+    tools:context="com.software.simons.museum_beacon.VideoActivity">
     <VideoView
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"

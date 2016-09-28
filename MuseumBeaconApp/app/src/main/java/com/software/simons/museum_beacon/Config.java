@@ -1,4 +1,4 @@
-package com.software.simons.museum_beacons;
+package com.software.simons.museum_beacon;
 
 /**
  * Created by echessa on 7/17/15.

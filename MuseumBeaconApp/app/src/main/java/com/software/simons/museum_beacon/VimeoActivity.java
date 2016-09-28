@@ -1,4 +1,4 @@
-package com.software.simons.museum_beacons;
+package com.software.simons.museum_beacon;
 
 import android.app.Activity;
 import android.os.Bundle;
