@@ -40,3 +40,6 @@ MuseumBeaconApp/.idea/
 
 # Keystore files
 *.jks
+
+# Mac crap
+.DS_Store
