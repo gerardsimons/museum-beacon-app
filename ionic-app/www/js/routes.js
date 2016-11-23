@@ -7,38 +7,6 @@ angular.module('app.routes', [])
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
-    
-  
-
-      .state('tabsController.cameraTabDefaultPage', {
-    url: '/page2',
-    views: {
-      'tab4': {
-        templateUrl: 'templates/cameraTabDefaultPage.html',
-        controller: 'cameraTabDefaultPageCtrl'
-      }
-    }
-  })
-
-  .state('tabsController.cartTabDefaultPage', {
-    url: '/page3',
-    views: {
-      'tab2': {
-        templateUrl: 'templates/cartTabDefaultPage.html',
-        controller: 'cartTabDefaultPageCtrl'
-      }
-    }
-  })
-
-  .state('tabsController.cloudTabDefaultPage', {
-    url: '/page4',
-    views: {
-      'tab3': {
-        templateUrl: 'templates/cloudTabDefaultPage.html',
-        controller: 'cloudTabDefaultPageCtrl'
-      }
-    }
-  })
 
   .state('tabsController', {
     url: '/page1',
@@ -64,7 +32,13 @@ angular.module('app.routes', [])
     controller: 'beaconsPageCtrl'
   })
 
-$urlRouterProvider.otherwise('/page1/page2')
+  .state('mapPage', {
+    url: '/map',
+    templateUrl: 'templates/mapPage.html',
+    controller: 'mapPageCtrl'
+  })
+
+$urlRouterProvider.otherwise('/')
 
   
 
